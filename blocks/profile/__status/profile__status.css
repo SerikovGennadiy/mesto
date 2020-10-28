@@ -1,0 +1,21 @@
+.profile__status {
+  padding: 0;
+  margin: 0;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+
+  grid-column: span 2;
+}
+
+@media screen and (max-width: 767px){
+  .profile__status {
+    font-size: 14px;
+    line-height: 17px;
+    justify-items: center;
+  }
+}
+

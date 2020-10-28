@@ -1,0 +1,10 @@
+@import url(../page/__container/page__container.css);
+@import url(../page/__header/page__header.css);
+@import url(../page/__profile/page__profile.css);
+@import url(../page/__elements/page__elements.css);
+@import url(../page/__footer/page__footer.css);
+
+.page {
+  background-color: #000;
+  color: #fff;
+}

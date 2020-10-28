@@ -1,14 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
 <body class="page">
     <div class="page__container">
-
+        <header class="header page__header">
+          <div class="header__logo"></div>
+          <div class="header__line"></div>
+        </header>
+        <main>
+          <section class="profile page__profile">
+            <div class="profile__avatar">
+              <img class="profile__avatar-photo" src="./images/avatar/сousteau.jpg" alt="Фотография Жака-Ива Кусто">
+            </div>
+            <div class="profile__info">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <span class="profile__edit-button"></span>
+              <p class="profile__status">Исследователь океана</p>
+            </div>
+            <span class="profile__add-button"></span>
+          </section>
+          <section class="page__elements">
+            <!--<h2></h2>-->
+            <ul class="elements">
+              <li class="element">
+                <div class="element__picture">
+                  <img class="element__picture-image" src="./images/cities/karachaevsk.jpg" alt="Изображение города Карачаевск">
+                </div>
+                <div class="element__title-container">
+                  <p class="element__title">Карачаевск</p>
+                  <span class="element__like-icon"></span>
+                </div>
+              </li>
+              <li class="element">
+                <div class="element__picture">
+                  <img class="element__picture-image" src="./images/cities/elbrus.jpg" alt="Изображение горы Эльбрус">
+                </div>
+                <div class="element__title-container">
+                  <p class="element__title">Гора Эльбрус</p>
+                  <span class="element__like-icon"></span>
+                </div>
+              </li>
+              <li class="element">
+                <div class="element__picture">
+                  <img class="element__picture-image" src="./images/cities/dombay.jpg" alt="Изображение Домбая">
+                </div>
+                <div class="element__title-container">
+                  <p class="element__title">Домбай</p>
+                  <span class="element__like-icon"></span>
+                </div>
+              </li>
+              <li class="element">
+                <div class="element__picture">
+                  <img class="element__picture-image" src="./images/cities/krasnay_polyana.jpg" alt="Изображение Красной поляны (Сочи)">
+                </div>
+                <div class="element__title-container">
+                  <p class="element__title">Красная поляна</p>
+                  <span class="element__like-icon"></span>
+                </div>
+              </li>
+              <li class="element">
+                <div class="element__picture">
+                  <img class="element__picture-image" src="./images/cities/petropavlovsk-kamchatskiy.jpg" alt="Изображение Петропавловск-Камчасткого">
+                </div>
+                <div class="element__title-container">
+                  <p class="element__title">Петропавловск-Камчасткий</p>
+                  <span class="element__like-icon"></span>
+                </div>
+              </li>
+              <li class="element">
+                <div class="element__picture">
+                  <img class="element__picture-image" src="./images/cities/altai.jpg" alt="Изображение одной из рек на Алтае">
+                </div>
+                <div class="element__title-container">
+                  <p class="element__title">Алтай</p>
+                  <span class="element__like-icon"></span>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </main>
+        <footer class="footer page__footer">
+          <div class="footer__copyright">© 2020 Mesto Russia</div>
+        </footer>
+        <div class="popup">
+            <form class="popup__container">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <div class="popup__fields">
+                  <input type="text" class="popup__field" name="profile__name" value="" placeholder="Имя">
+                  <input type="text" class="popup__field" name="profile__status" value="" placeholder="О себе">
+                </div>
+                <button type="submit" class="popup__submit-button">Сохранить</button>
+                <div class="popup__close-button"></div>
+            </form>
+        </div>
     </div>
+    <script src="./scripts/script.js"></script>
 </body>
 </html>

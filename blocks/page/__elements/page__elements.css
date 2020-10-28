@@ -1,0 +1,12 @@
+@media screen and (max-width: 1023px){
+  .page__elements {
+    max-width: calc(100% - 18px * 2);
+  }
+}
+
+@media screen and (max-width: 767px){
+  .page__elements {
+    max-width: 100%;
+  }
+}
+
