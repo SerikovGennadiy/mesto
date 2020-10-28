@@ -9,6 +9,15 @@
 3. *native* JS
 4. и чудо **БЭМ**
 
+##### Инструменты
+1. Visual Studio Code
+2. Git
+3. Live Server
+4. Emmet
+
+##### GitHubPages
+* [Ссылка на GitHubPages](https://serikovgennadiy.github.io/mesto/index.html)
+
 * Figma
 * Картинки
 
