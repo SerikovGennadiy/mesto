@@ -6,6 +6,9 @@
 
   position: relative;
   margin-left: auto;
+
+  outline: none;
+  background-color: transparent;
 }
 
 .profile__add-button:before {
