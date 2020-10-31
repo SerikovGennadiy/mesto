@@ -17,6 +17,9 @@ function PopupFormSubmit (evt) {
 }
 
 function OpenPopup() {
+  popupInputName.value   = profileName.textContent;
+  popupInputStatus.value = profileStatus.textContent;
+
   if(!popup.classList.contains('popup_opened')) {
     popup.classList.add('popup_opened');
   }
