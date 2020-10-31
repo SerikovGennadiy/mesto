@@ -6,6 +6,7 @@
     height: 40px;
     background-color: rgba(0, 0, 0, 0);
     transform: rotate(45deg);
+    outline: none;
     border: none;
 }
 

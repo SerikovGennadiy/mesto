@@ -10,7 +10,6 @@
     <div class="page__container">
         <header class="header page__header">
           <div class="header__logo"></div>
-          <div class="header__line"></div>
         </header>
         <main>
           <section class="profile page__profile">
@@ -19,84 +18,72 @@
             </div>
             <div class="profile__info">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <span class="profile__edit-button"></span>
-              <p class="profile__status">Исследователь океана</p>
+              <button type="button" class="profile__edit-button"></button>
+              <h2 class="profile__status">Исследователь океана</h2>
             </div>
             <span class="profile__add-button"></span>
           </section>
-          <section class="page__elements">
+          <section class="elements page__elements">
             <!--<h2></h2>-->
-            <ul class="elements">
-              <li class="element">
-                <div class="element__picture">
-                  <img class="element__picture-image" src="./images/cities/karachaevsk.jpg" alt="Изображение города Карачаевск">
-                </div>
+            <ul class="elements__list">
+              <li class="element"> 
+                <img class="element__picture" src="./images/cities/karachaevsk.jpg" alt="Изображение города Карачаевск">
                 <div class="element__title-container">
-                  <p class="element__title">Карачаевск</p>
-                  <span class="element__like-icon"></span>
+                  <h2 class="element__title">Карачаевск</h2>
+                  <button type="button" class="element__like-icon"></button>
                 </div>
               </li>
               <li class="element">
-                <div class="element__picture">
-                  <img class="element__picture-image" src="./images/cities/elbrus.jpg" alt="Изображение горы Эльбрус">
-                </div>
+                <img class="element__picture" src="./images/cities/elbrus.jpg" alt="Изображение горы Эльбрус">
                 <div class="element__title-container">
-                  <p class="element__title">Гора Эльбрус</p>
-                  <span class="element__like-icon"></span>
+                  <h2 class="element__title">Гора Эльбрус</h2>
+                  <button type="button" class="element__like-icon"></button>
                 </div>
               </li>
               <li class="element">
-                <div class="element__picture">
-                  <img class="element__picture-image" src="./images/cities/dombay.jpg" alt="Изображение Домбая">
-                </div>
+                <img class="element__picture" src="./images/cities/dombay.jpg" alt="Изображение Домбая">
                 <div class="element__title-container">
-                  <p class="element__title">Домбай</p>
-                  <span class="element__like-icon"></span>
+                  <h2 class="element__title">Домбай</h2>
+                  <button type="button" class="element__like-icon"></button>
                 </div>
               </li>
               <li class="element">
-                <div class="element__picture">
-                  <img class="element__picture-image" src="./images/cities/krasnay_polyana.jpg" alt="Изображение Красной поляны (Сочи)">
-                </div>
+                <img class="element__picture" src="./images/cities/krasnay_polyana.jpg" alt="Изображение Красной поляны (Сочи)">
                 <div class="element__title-container">
-                  <p class="element__title">Красная поляна</p>
-                  <span class="element__like-icon"></span>
+                  <h2 class="element__title">Красная поляна</h2>
+                  <button type="button" class="element__like-icon"></button>
                 </div>
               </li>
               <li class="element">
-                <div class="element__picture">
-                  <img class="element__picture-image" src="./images/cities/petropavlovsk-kamchatskiy.jpg" alt="Изображение Петропавловск-Камчасткого">
-                </div>
+                <img class="element__picture" src="./images/cities/petropavlovsk-kamchatskiy.jpg" alt="Изображение Петропавловск-Камчасткого">
                 <div class="element__title-container">
-                  <p class="element__title">Петропавловск-Камчасткий</p>
-                  <span class="element__like-icon"></span>
+                  <h2 class="element__title">Петропавловск-Камчасткий</h2>
+                  <button type="button" class="element__like-icon"></button>
                 </div>
               </li>
               <li class="element">
-                <div class="element__picture">
-                  <img class="element__picture-image" src="./images/cities/altai.jpg" alt="Изображение одной из рек на Алтае">
-                </div>
+                <img class="element__picture" src="./images/cities/altai.jpg" alt="Изображение одной из рек на Алтае">
                 <div class="element__title-container">
-                  <p class="element__title">Алтай</p>
-                  <span class="element__like-icon"></span>
+                  <h2 class="element__title">Алтай</h2>
+                  <button type="button" class="element__like-icon"></button>
                 </div>
               </li>
             </ul>
           </section>
         </main>
         <footer class="footer page__footer">
-          <div class="footer__copyright">© 2020 Mesto Russia</div>
+          <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
         <div class="popup">
-            <form class="popup__container">
+            <div class="popup__container">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <div class="popup__fields">
-                  <input type="text" class="popup__field" name="profile__name" value="" placeholder="Имя">
-                  <input type="text" class="popup__field" name="profile__status" value="" placeholder="О себе">
-                </div>
-                <button type="submit" class="popup__submit-button">Сохранить</button>
-                <div class="popup__close-button"></div>
-            </form>
+                <form class="popup__form" action="#" method="get" name="popup__form">
+                  <input type="text" class="popup__field popup__field_text_name" name="profile__name" value="" placeholder="Имя">
+                  <input type="text" class="popup__field popup__field_text_status" name="profile__status" value="" placeholder="О себе">              
+                  <button type="submit" class="popup__submit-button">Сохранить</button>
+                </form>
+                <button type="button" class="popup__close-button"></button>
+            </div>
         </div>
     </div>
     <script src="./scripts/script.js"></script>
