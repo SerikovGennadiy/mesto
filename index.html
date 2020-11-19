@@ -25,50 +25,7 @@
           </section>
           <section class="elements page__elements">
             <!--<h2></h2>-->
-            <ul class="elements__list">
-              <li class="element">
-                <img class="element__picture" src="./images/cities/karachaevsk.jpg" alt="Изображение города Карачаевск">
-                <div class="element__title-container">
-                  <h2 class="element__title">Карачаевск</h2>
-                  <button type="button" class="element__like-icon"></button>
-                </div>
-              </li>
-              <li class="element">
-                <img class="element__picture" src="./images/cities/elbrus.jpg" alt="Изображение горы Эльбрус">
-                <div class="element__title-container">
-                  <h2 class="element__title">Гора Эльбрус</h2>
-                  <button type="button" class="element__like-icon"></button>
-                </div>
-              </li>
-              <li class="element">
-                <img class="element__picture" src="./images/cities/dombay.jpg" alt="Изображение Домбая">
-                <div class="element__title-container">
-                  <h2 class="element__title">Домбай</h2>
-                  <button type="button" class="element__like-icon"></button>
-                </div>
-              </li>
-              <li class="element">
-                <img class="element__picture" src="./images/cities/krasnay_polyana.jpg" alt="Изображение Красной поляны (Сочи)">
-                <div class="element__title-container">
-                  <h2 class="element__title">Красная поляна</h2>
-                  <button type="button" class="element__like-icon"></button>
-                </div>
-              </li>
-              <li class="element">
-                <img class="element__picture" src="./images/cities/petropavlovsk-kamchatskiy.jpg" alt="Изображение Петропавловск-Камчасткого">
-                <div class="element__title-container">
-                  <h2 class="element__title">Петропавловск-Камчасткий</h2>
-                  <button type="button" class="element__like-icon"></button>
-                </div>
-              </li>
-              <li class="element">
-                <img class="element__picture" src="./images/cities/altai.jpg" alt="Изображение одной из рек на Алтае">
-                <div class="element__title-container">
-                  <h2 class="element__title">Алтай</h2>
-                  <button type="button" class="element__like-icon"></button>
-                </div>
-              </li>
-            </ul>
+            <ul class="elements__list"></ul>
           </section>
         </main>
         <footer class="footer page__footer">
@@ -76,16 +33,45 @@
         </footer>
         <div class="popup">
             <div class="popup__container">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form" action="#" method="get" name="popup__form">
-                  <input type="text" class="popup__field popup__field_text_name" name="profile__name" value="" placeholder="Имя">
-                  <input type="text" class="popup__field popup__field_text_status" name="profile__status" value="" placeholder="О себе">
-                  <button type="submit" class="popup__submit-button">Сохранить</button>
-                </form>
+                <div class="popup__content"></div>
                 <button type="button" class="popup__close-button"></button>
             </div>
         </div>
     </div>
+    <template id="profile-form">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" action="#" method="get" name="popup__form">
+        <input type="text" class="popup__field popup__field_text_name" name="profile__name" value="" placeholder="Имя">
+        <input type="text" class="popup__field popup__field_text_status" name="profile__status" value="" placeholder="О себе">
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+      </form>
+    </template>
+    <template id="card-form">
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" action="#" method="get" name="popup__form">
+        <input type="text" class="popup__field popup__field_text_name" name="profile__name" value="" placeholder="Название">
+        <input type="text" class="popup__field popup__field_text_link" name="profile__link" value="" placeholder="Ссылка на картинку">
+        <button type="submit" class="popup__submit-button">Создать</button>
+      </form>
+    </template>
+    <template id="card-preview">
+      <div class="preview">
+        <img class="preview__image" src="" alt="">
+        <h2 class="preview__title"></h2>
+      </div>
+    </template>
+    <template id="card-template">
+      <li class="element">
+        <img class="element__picture" src="" alt="">
+        <div class="element__title-container">
+          <h2 class="element__title"></h2>
+          <button type="button" class="element__like-icon element__like-button"></button>
+        </div>
+        <button type="button" class="element__trash-icon element__trash-button"></button>
+      </li>
+    </template>
+    <script src="./scripts/popup.js"></script>
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/script.js"></script>
 </body>
 </html>

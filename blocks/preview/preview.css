@@ -1,0 +1,6 @@
+@import url(./__image/preview__image.css);
+@import url(./__title/preview__title.css);
+
+.preview {
+  display: grid;
+}

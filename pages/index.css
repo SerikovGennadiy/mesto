@@ -6,8 +6,11 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/preview/preview.css);
 
 @import url(../blocks/popup/popup.css);
 
 /*modificators*/
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/element/__like-icon/_liked/element__like-icon_liked.css);
+@import url(../blocks/popup/__container/_frame/popup__container_frame_preview.css);

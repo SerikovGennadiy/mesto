@@ -7,7 +7,7 @@
 @import url(../popup/__submit-button/popup__submit-button.css);
 
 .popup {
-   display: none;
+   /*display: none;*/
 
    position: fixed;
    top: 0;
@@ -21,4 +21,8 @@
    height: 100vh;
 
    background-color: rgba(0,0,0,.5);
+
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 0s, opacity .2s linear;
 }
