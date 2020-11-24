@@ -1,55 +1,49 @@
-let profileEditButton = document.querySelector('.profile__edit-button');
-let cardAddButton = document.querySelector('.profile__add-button');
-let profileName   = document.querySelector('.profile__name');
-let profileStatus = document.querySelector('.profile__status');
+//========profileForm======
+const profile = document.querySelector('.popup_profile');
+const profileName = document.querySelector('.profile__name');
+const profileStatus = document.querySelector('.profile__status');
+const profileEditButton = document.querySelector('.profile__edit-button');
 
-function InitProfileForm(CallBack) {
-  let popupInputName = document.querySelector('.popup__field_text_name');
-  let popupInputStatus = document.querySelector('.popup__field_text_status');
+const profileForm = profile.querySelector('.popup__form');
+const profileNameInput = profileForm.querySelector('.popup__field_text_name');
+const profileStatusInput = profileForm.querySelector('.popup__field_text_status');
 
-  popupInputName.value   = profileName.textContent;
-  popupInputStatus.value = profileStatus.textContent;
+function InitProfileForm() {
+  profileNameInput.value   = profileName.textContent;
+  profileStatusInput.value = profileStatus.textContent;
 
-  function PopupFormSubmit (evt) {
-    evt.preventDefault();
-    profileName.textContent = popupInputName.value;
-    profileStatus.textContent = popupInputStatus.value;
-
-    if(typeof CallBack == 'function') {
-      CallBack();
-    }
-  }
-
-  let popupForm = document.querySelector('.popup__form');
-  popupForm.addEventListener('submit', PopupFormSubmit);
+  profileForm.addEventListener('submit', (event)=>{
+    event.preventDefault();
+    profileName.textContent = profileNameInput.value;
+    profileStatus.textContent = profileStatusInput.value;
+    ClosePopup(profile);
+  });
 }
+//=========cardForm==========
+const card = document.querySelector('.popup_card');
+const cardAddButton = document.querySelector('.profile__add-button');
 
-function InitCardForm(CallBack) {
-  function PopupFormSubmit (evt) {
-    evt.preventDefault();
+const cardForm = card.querySelector('.popup__form');
+const cardNameInput = cardForm.querySelector('.popup__field_text_name');
+const cardLinkInput = cardForm.querySelector('.popup__field_text_link');
 
-    let name = document.querySelector('.popup__field_text_name').value;
-    let link = document.querySelector('.popup__field_text_link').value;
-
-    let initialCard = {name, link};
-    initialCards.push(initialCard)
-
-    if(typeof RenderCards == 'function') RenderCards();
-    if(typeof CallBack == 'function') CallBack();
-  }
-
-  let popupForm = document.querySelector('.popup__form');
-  popupForm.addEventListener('submit', PopupFormSubmit);
+function InitCardForm() {
+  cardForm.addEventListener('submit', (event)=>{
+    event.preventDefault();
+    const initialCard = {
+      name : cardNameInput.value,
+      link : cardLinkInput.value
+    };
+    
+    RenderCard(initialCard);
+    ClosePopup(card);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-   if(typeof RenderCards == 'function') RenderCards();
-    profileEditButton.addEventListener('click', (event)=>{
-      event.stopPropagation();
-      InitPopup('#profile-form', InitProfileForm)
-    });
-    cardAddButton.addEventListener('click', (event)=>{
-      event.stopPropagation();
-      InitPopup('#card-form', InitCardForm)
-    });
+   RenderCards();
+   InitProfileForm();
+   InitCardForm();
+   profileEditButton.addEventListener('click', ()=>InitPopup(profile));
+   cardAddButton.addEventListener('click', ()=>InitPopup(card));
 });

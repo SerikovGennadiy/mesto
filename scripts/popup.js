@@ -1,51 +1,33 @@
-const popup  = document.querySelector('.popup');
-const popupContainer = document.querySelector('.popup__container')
-const popupContent = popup.querySelector('.popup__content');
-const popupCloseButton = popup.querySelector('.popup__close-button');
-
-
-function OpenPopup() {
+function OpenPopup(popup) {
   if(!popup.classList.contains('popup_opened')) {
       popup.classList.add('popup_opened');
   }
 }
 
-function ClosePopup() {
+function ClosePopup(popup) {
   if(popup.classList.contains('popup_opened')) {
     popup.classList.remove('popup_opened');
   }
 }
 
-function PopupFormSubmit (evt) {
-    evt.preventDefault();
-
-    profileName.textContent = popupInputName.value;
-    profileStatus.textContent = popupInputStatus.value;
-    ClosePopup();
-}
-
-let InitPopupContent = new Function();
-
-function InitPopup(blockSelector, blockInitFunction, popupStyleClass){
-  InitPopupContent = blockInitFunction;
-
-  popupContainer.className = `popup__container`;
-  if(popupStyleClass != undefined) {
-     popupContainer.classList.add(popupStyleClass);
+function InitPopup(popup, popupStyleClass){
+  if(popup){
+    const popupContainer = popup.querySelector('.popup__container');
+          popupContainer.className = 'popup__container';
+    if(popupStyleClass != undefined) {
+      popupContainer.classList.add(popupStyleClass);
+    }
+    OpenPopup(popup);
   }
-
-  popupContent.innerHTML='';
-  content = document.querySelector(blockSelector).cloneNode(true).content;
-  popupContent.append(content);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  popupContent.addEventListener('DOMSubtreeModified', event => {
-    if(event.target.children.length != 0){
-      OpenPopup();
-      InitPopupContent(ClosePopup);
-    };
+  const closeButtons = document.querySelectorAll('.popup__close-button');
+  closeButtons.forEach(button=> {
+    button.addEventListener('click', event => {
+      const popup = event.target.closest('.popup');
+      ClosePopup(popup);
+    });
   });
-  popupCloseButton.addEventListener('click', ClosePopup);
 });
 
