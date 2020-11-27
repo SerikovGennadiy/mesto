@@ -1,0 +1,5 @@
+.popup__field-box {
+    position: relative;
+    display: grid;
+    row-gap: 5px;
+}

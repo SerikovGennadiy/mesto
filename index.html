@@ -34,20 +34,32 @@
         <div class="popup popup_profile">
             <div class="popup__container">
               <h2 class="popup__title">Редактировать профиль</h2>
-              <form class="popup__form" action="#" method="get" name="popup__form">
-                <input type="text" class="popup__field popup__field_text_name" name="profile__name" value="" placeholder="Имя">
-                <input type="text" class="popup__field popup__field_text_status" name="profile__status" value="" placeholder="О себе">
+              <form class="popup__form" action="#" method="get" name="popup__form" novalidate>
+                <div class="popup__field-box">
+                  <input type="text" id="profile-name" class="popup__field popup__field_text_name" name="profile__name" value="" placeholder="Имя" required minlength="2" maxlength="40">
+                  <span id="profile-name-error" class="popup__field-error"></span>
+                </div>
+                <div class="popup__field-box">
+                  <input type="text" id="profile-status" class="popup__field popup__field_text_status" name="profile__status" value="" placeholder="О себе" required minlength="2" maxlength="200">
+                  <span id="profile-status-error" class="popup__field-error"></span>
+                </div>
                 <button type="submit" class="popup__submit-button">Сохранить</button>
               </form>
-                <button type="button" class="popup__close-button"></button>
+              <button type="button" class="popup__close-button"></button>
             </div>
         </div>
         <div class="popup popup_card">
           <div class="popup__container">
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__form" action="#" method="get" name="popup__form">
-              <input type="text" class="popup__field popup__field_text_name" name="profile__name" value="" placeholder="Название">
-              <input type="text" class="popup__field popup__field_text_link" name="profile__link" value="" placeholder="Ссылка на картинку">
+            <form class="popup__form" action="#" method="get" name="popup__form" novalidate>
+              <div class="popup__field-box">
+                <input type="text" id="card-name" class="popup__field popup__field_text_name" name="card__name" value="" placeholder="Название" required minlength="2" maxlength="30">
+                <span id="card-name-error" class="popup__field-error"></span>
+              </div>
+              <div class="popup__field-box">
+                <input type="url" id="card-link" class="popup__field popup__field_text_link" name="card__link" value="" placeholder="Ссылка на картинку" required>
+                <span id="card-link-error" class="popup__field-error"></span>
+              </div>
               <button type="submit" class="popup__submit-button">Создать</button>
             </form>
             <button type="button" class="popup__close-button"></button>
@@ -75,6 +87,7 @@
     </template>
     <script src="./scripts/popup.js"></script>
     <script src="./scripts/cards.js"></script>
+    <script src="./scripts/validation.js"></script>
     <script src="./scripts/script.js"></script>
 </body>
 </html>

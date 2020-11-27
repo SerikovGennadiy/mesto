@@ -14,3 +14,6 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/element/__like-icon/_liked/element__like-icon_liked.css);
 @import url(../blocks/popup/__container/_frame/popup__container_frame_preview.css);
+@import url(../blocks/popup/__field/_error/popup__field_error.css);
+@import url(../blocks/popup/__field-error/_active/popup__field-error_active.css);
+@import url(../blocks/popup/__submit-button/_inactive/popup__submit-button_inactive.css);

@@ -29,5 +29,20 @@ document.addEventListener("DOMContentLoaded", function() {
       ClosePopup(popup);
     });
   });
+  const body = document.querySelector('body');
+  body.addEventListener('click', event => {
+    if(event.target.classList.contains('popup_opened')){
+      const popup = event.target;
+      ClosePopup(popup);
+    }
+  });
+  body.addEventListener('keydown', event => {
+    if(event.key == 'Escape'){
+      const popup = document.querySelector('.popup_opened');
+      if(popup){
+        ClosePopup(popup);
+      }
+    }
+  });
 });
 
