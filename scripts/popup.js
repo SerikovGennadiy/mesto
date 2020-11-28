@@ -1,48 +1,28 @@
-function OpenPopup(popup) {
-  if(!popup.classList.contains('popup_opened')) {
-      popup.classList.add('popup_opened');
+const body = document.querySelector('body');
+
+function openPopup(popup) {
+  popup.addEventListener('click', closingPopupByOverlay);
+  body.addEventListener('keydown', closingPopupByEscape);
+  popup.classList.add('popup_opened');
+}
+
+function closePopup(popup) {
+  popup.removeEventListener('click', closingPopupByOverlay);
+  body.removeEventListener('keydown', closingPopupByEscape);
+  popup.classList.remove('popup_opened');
+}
+
+function closingPopupByOverlay(event) 
+{
+  if(event.target.classList.contains('popup')){
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
 }
 
-function ClosePopup(popup) {
-  if(popup.classList.contains('popup_opened')) {
-    popup.classList.remove('popup_opened');
+function closingPopupByEscape(keyEvent){ 
+  if(keyEvent.key == 'Escape'){
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
 }
-
-function InitPopup(popup, popupStyleClass){
-  if(popup){
-    const popupContainer = popup.querySelector('.popup__container');
-          popupContainer.className = 'popup__container';
-    if(popupStyleClass != undefined) {
-      popupContainer.classList.add(popupStyleClass);
-    }
-    OpenPopup(popup);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-  const closeButtons = document.querySelectorAll('.popup__close-button');
-  closeButtons.forEach(button=> {
-    button.addEventListener('click', event => {
-      const popup = event.target.closest('.popup');
-      ClosePopup(popup);
-    });
-  });
-  const body = document.querySelector('body');
-  body.addEventListener('click', event => {
-    if(event.target.classList.contains('popup_opened')){
-      const popup = event.target;
-      ClosePopup(popup);
-    }
-  });
-  body.addEventListener('keydown', event => {
-    if(event.key == 'Escape'){
-      const popup = document.querySelector('.popup_opened');
-      if(popup){
-        ClosePopup(popup);
-      }
-    }
-  });
-});
-

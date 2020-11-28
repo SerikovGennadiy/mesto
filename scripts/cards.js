@@ -3,43 +3,28 @@ const cardGalary = document.querySelector('.elements__list');
 const preview = document.querySelector('.popup_preview');
 const previewImage = preview.querySelector('.preview__image');
 const previewTitle = preview.querySelector('.preview__title');
+const previewCloseButton = preview.querySelector('.popup__close-button');
 
-const initialCards = [
-  {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-function RenderCards() {
+function renderCards() {
   const cardGalary = document.querySelector('.elements__list');
   if(cardGalary){
      Array.from(cardGalary.children).forEach(item => item.remove());
-     initialCards.forEach((item) => RenderCard(item));
+     initialCards.forEach((item) => renderCard(item));
   }
 }
 
-function CreateCard(initialCard){
+function deleteCard(button) {
+  const card = button.target.closest('.element');
+  card.remove();
+}
+
+function likeCard(button) {
+  const card = button.target.closest('.element');
+  const likeButton = card.querySelector('.element__like-button');
+  likeButton.classList.toggle('element__like-icon_liked');
+}
+
+function createCard(initialCard){
   const cardTemplate = document.querySelector('#card-template').cloneNode(true).content;  
   const card = cardTemplate.querySelector('.element');
   const cardPicture = card.querySelector('.element__picture');
@@ -50,39 +35,25 @@ function CreateCard(initialCard){
     previewImage.setAttribute('src', initialCard.link);
     previewImage.setAttribute('alt',`Изображение ${initialCard.name}`)   
     previewTitle.textContent = initialCard.name;         
-    InitPopup(preview, 'popup__container_frame_preview');
+    openPopup(preview);
   });  
+
   const cardTitle = card.querySelector('.element__title');
   cardTitle.textContent = initialCard.name;
   const likeButton = card.querySelector('.element__like-button');
-  likeButton.addEventListener('click', LikeCard);
+  likeButton.addEventListener('click', likeCard);
   const trashButton = card.querySelector('.element__trash-button');
-  trashButton.addEventListener('click', DeleteCard); 
+  trashButton.addEventListener('click', deleteCard); 
   return card;
 }
 
-function RenderCard(initialCard) {
-    const card = CreateCard(initialCard);
+function renderCard(initialCard) {
+    const card = createCard(initialCard);
     cardGalary.prepend(card);
 }
 
-function DeleteCard(button) {
-  const card = button.target.closest('.element');
-  if(card) {
-    const initialCard = {
-      name: card.querySelector('.element__title').textContent,
-      link: card.querySelector('.element__picture').getAttribute('src')
-    }
-    const index = initialCards.indexOf(initialCard);
-    initialCards.splice(index, 1);
-    card.remove();
-  }
-}
 
-function LikeCard(button) {
-  const card = button.target.closest('.element');
-  if(card) {
-    const likeButton = card.querySelector('.element__like-button');
-    likeButton.classList.toggle('element__like-icon_liked');
-  }
-}
+
+document.addEventListener("DOMContentLoaded", function() {
+  previewCloseButton.addEventListener('click', ()=>closePopup(preview));
+});
