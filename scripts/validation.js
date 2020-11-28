@@ -62,6 +62,14 @@ function checkFormValidity(formElement) {
     const inputList = Array.from(formElement.querySelectorAll(validSettings.inputSelectorClass));
     const buttonElement = formElement.querySelector(validSettings.submitButtonSelectorClass); 
     toggleButtonState(inputList, buttonElement);
+    inputList.forEach((inputElement) => {
+        if(inputElement.value != '') {
+            checkInputValidity(formElement, inputElement);
+        }
+        else {
+            hideInputError(formElement, inputElement);
+        }
+    }); 
 }
 
 function enableValidation(settings) {
