@@ -19,8 +19,8 @@
 @media screen and (max-width: 767px) {
   .popup__container {
     width: 240px;
-    height: 270px;
-    transform: translate(-50%, -73%);
+    height: 300px;
+    transform: translate(-50%, -50%);
     padding: 25px 21px;
   }
 }
