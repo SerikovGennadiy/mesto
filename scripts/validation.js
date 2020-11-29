@@ -73,11 +73,11 @@ function checkFormValidity(formElement) {
 }
 
 function enableValidation(settings) {
-    if(settings != undefined) { 
-        Object.assign(validSettings, settings);
-    }   
-
-    const formList = Array.from(document.querySelectorAll(validSettings.formSelectorClass));
+    if(settings == undefined) {
+        throw 'enableSettings without settings parameter';
+    }
+    Object.assign(validSettings, settings);
+    const formList = Array.from(document.querySelectorAll(settings.formSelectorClass));
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', function (evt) {
             evt.preventDefault();

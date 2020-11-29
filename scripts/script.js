@@ -62,5 +62,12 @@ document.addEventListener("DOMContentLoaded", function() {
    initCardForm();
    profileEditButton.addEventListener('click', openEditProfilePopup);
    cardAddButton.addEventListener('click', openAddCardPopup);
-   enableValidation();
+   enableValidation({
+      formSelectorClass: '.popup__form',
+      inputSelectorClass: '.popup__field',
+      inputErrorClass: 'popup__field_error',
+      errorClass: 'popup__field-error_active',
+      submitButtonSelectorClass: '.popup__submit-button',
+      inactiveButtonClass: 'popup__submit-button_inactive'
+    });
 });
