@@ -52,11 +52,12 @@ export const profileNameInput = profileForm.querySelector('.popup__field_text_na
 export const profileStatusInput = profileForm.querySelector('.popup__field_text_status');
 
 export const card = document.querySelector('.popup_card');
-export const cardAddButton = document.querySelector('.profile__add-button');
 export const cardCloseButton = card.querySelector('.popup__close-button');
+export const cardAddButton = document.querySelector('.profile__add-button');
 
 export const cardForm = card.querySelector('.popup__form');
 export const cardNameInput = cardForm.querySelector('.popup__field_text_name');
 export const cardLinkInput = cardForm.querySelector('.popup__field_text_link');
 
 export const ESCAPE = 'Escape';
+export const cardTemplate = '#card-template';

@@ -1,4 +1,4 @@
-class FormValidation {
+class FormValidator {
   constructor(config, form) {
     this._config = config;
     this._form = form;
@@ -33,11 +33,11 @@ class FormValidation {
     }
   }
 
- _checkInputValidity(inputElement){
+ _checkInputValidity = (inputElement) => {
     if (!inputElement.validity.valid) {
-      this._showInputError(this._form, inputElement);
+      this._showInputError(inputElement);
     } else {
-      this._hideInputError(this._form, inputElement);
+      this._hideInputError(inputElement);
     }
  }
 
@@ -48,8 +48,8 @@ class FormValidation {
     this._toggleButtonState(inputList, buttonElement);
 
     inputList.forEach((inputElement) => {
-        inputElement.addEventListener('input', function () {
-            this._checkInputValidity(this._form, inputElement);
+        inputElement.addEventListener('input', () => {
+            this._checkInputValidity(inputElement);
             this._toggleButtonState(inputList, buttonElement);
         });
     });
@@ -57,8 +57,8 @@ class FormValidation {
 
  enableValidation = () => {
     this._form.addEventListener('submit', event => event.preventDefault());
-    this._form._setEventListeners(formElement);
+    this._setEventListeners(this._form);
   }
 }
 
-export default FormValidation
+export default FormValidator;

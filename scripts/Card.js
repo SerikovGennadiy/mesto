@@ -39,9 +39,9 @@ class Card {
   _setEventListeners = (card) => {
     const cardPicture = card.querySelector('.element__picture');
           cardPicture.addEventListener('click', () => {
-            previewImage.setAttribute('src', initialCard.link);
-            previewImage.setAttribute('alt',`Изображение ${initialCard.name}`)
-            previewTitle.textContent = initialCard.name;
+            previewImage.setAttribute('src', this._link);
+            previewImage.setAttribute('alt',`Изображение ${this._name}`)
+            previewTitle.textContent = this._name;
             openPopup(preview);
           });
 

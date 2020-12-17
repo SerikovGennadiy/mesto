@@ -1,6 +1,20 @@
-//========profileForm======
+import { initialCards, validSettings } from './constant.js';
+import { openPopup, closePopup } from "./popup.js";
+import { preview, previewCloseButton } from './constant.js';
+import { profile, profileName, profileStatus, profileEditButton, profileCloseButton, profileForm, profileNameInput, profileStatusInput } from './constant.js';
+import { card, cardCloseButton, cardAddButton, cardForm, cardNameInput, cardLinkInput } from './constant.js';
 
-import { cardForm, profileForm } from "./constant.js";
+import  Card  from './Card.js';
+import  CardGallery  from './CardGallery.js';
+import  FormValidator  from './FormValidator.js';
+
+
+//=========cardFactory=======
+const cardFactory = (...args) => new Card(...args);
+const cardGallery = new CardGallery(initialCards, cardFactory);
+//========profileForm======
+const profileFormValidation = new FormValidator(validSettings, profileForm);
+      profileFormValidation.enableValidation();
 
 const openEditProfilePopup = () =>{
   profileNameInput.value   = profileName.textContent;
@@ -22,6 +36,8 @@ const initProfileForm = () => {
 }
 
 //=========cardForm==========
+const cardFormValidation = new FormValidator(validSettings, cardForm);
+      cardFormValidation.enableValidation();
 
 const openAddCardPopup = () =>  {
   cardNameInput.value = '';
@@ -37,7 +53,7 @@ const initCardForm = () => {
       link : cardLinkInput.value
     };
 
-    renderCard(initialCard);
+    cardGallery.renderCard(initialCard);
     closePopup(card);
   });
   cardCloseButton.addEventListener('click', ()=> {
@@ -47,17 +63,12 @@ const initCardForm = () => {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-   renderCards();
+   cardGallery.renderCards();
+
    initProfileForm();
    initCardForm();
+
+   previewCloseButton.addEventListener('click', () => {closePopup(preview)});
    profileEditButton.addEventListener('click', openEditProfilePopup);
    cardAddButton.addEventListener('click', openAddCardPopup);
-   enableValidation({
-      formSelectorClass: '.popup__form',
-      inputSelectorClass: '.popup__field',
-      inputErrorClass: 'popup__field_error',
-      errorClass: 'popup__field-error_active',
-      submitButtonSelectorClass: '.popup__submit-button',
-      inactiveButtonClass: 'popup__submit-button_inactive'
-    });
 });
