@@ -1,28 +1,29 @@
-const body = document.querySelector('body');
+import { body, ESCAPE } from './constant.js';
 
-function openPopup(popup) {
+const openPopup = (popup) => {
   popup.addEventListener('click', closingPopupByOverlay);
   body.addEventListener('keydown', closingPopupByEscape);
   popup.classList.add('popup_opened');
 }
 
-function closePopup(popup) {
+const closePopup = (popup) => {
   popup.removeEventListener('click', closingPopupByOverlay);
   body.removeEventListener('keydown', closingPopupByEscape);
   popup.classList.remove('popup_opened');
 }
 
-function closingPopupByOverlay(event) 
-{
+const closingPopupByOverlay = (event) => {
   if(event.target.classList.contains('popup')){
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
 }
 
-function closingPopupByEscape(keyEvent){ 
-  if(keyEvent.key == 'Escape'){
+const closingPopupByEscape = (keyEvent) => {
+  if(keyEvent.key == ESCAPE){
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
 }
+
+export { openPopup, closePopup };
