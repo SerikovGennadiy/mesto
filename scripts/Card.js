@@ -1,11 +1,10 @@
-import { openPopup } from './popup.js';
-import { preview, previewImage, previewTitle } from './constant.js';
-
 class Card {
-  constructor(initialCard, templateSelector) {
-    this._name = initialCard.name;
-    this._link = initialCard.link;
+  constructor(initialCard, templateSelector, previewer) {
+    this._initialCard = initialCard;
+    this._name = this._initialCard.name;
+    this._link = this._initialCard.link;
     this._templateSelector = templateSelector;
+    this._previewer = previewer;
   }
 
   _deleteCard = (button) => {
@@ -27,36 +26,31 @@ class Card {
             .querySelector('.element');
   }
 
-  _initialize = (card) => {
-    const cardPicture = card.querySelector('.element__picture');
+ _initialize = () => {
+    const cardPicture = this._card.querySelector('.element__picture');
           cardPicture.setAttribute('src', this._link);
           cardPicture.setAttribute('alt', `Изображение ${this._name}`);
 
-    const cardTitle = card.querySelector('.element__title');
+    const cardTitle = this._card.querySelector('.element__title');
           cardTitle.textContent = this._name;
   }
 
-  _setEventListeners = (card) => {
-    const cardPicture = card.querySelector('.element__picture');
-          cardPicture.addEventListener('click', () => {
-            previewImage.setAttribute('src', this._link);
-            previewImage.setAttribute('alt',`Изображение ${this._name}`)
-            previewTitle.textContent = this._name;
-            openPopup(preview);
-          });
+  _setEventListeners = () => {
+    const cardPicture = this._card.querySelector('.element__picture');
+          cardPicture.addEventListener('click', () => { this._previewer(this._initialCard); });
 
-    const likeButton = card.querySelector('.element__like-button');
+    const likeButton =  this._card.querySelector('.element__like-button');
           likeButton.addEventListener('click', this._likeCard);
 
-    const trashButton = card.querySelector('.element__trash-button');
+    const trashButton =  this._card.querySelector('.element__trash-button');
           trashButton.addEventListener('click', this._deleteCard);
   }
 
   create = () => {
-    const card = this._getDOMTemplate();
-      this._initialize(card);
-      this._setEventListeners(card);
-    return card;
+    this._card = this._getDOMTemplate();
+      this._initialize();
+      this._setEventListeners();
+    return this._card;
   }
 }
 

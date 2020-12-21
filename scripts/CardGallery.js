@@ -1,16 +1,16 @@
-import { cardTemplate } from './constant.js';
+import { cardTemplate } from './utils/constant.js';
+import { openCardPreview } from './utils/utils.js';
 
 class CardGallery {
- static cardGalary = document.querySelector('.elements__list');
-
- constructor(initialCards, cardFactory) {
-  this._initialCards = initialCards;
-  this._cardFactory = cardFactory;
- }
+  constructor(cardGallery, initialCards, cardFactory) {
+    this._cardGallery = cardGallery;
+    this._initialCards = initialCards;
+    this._cardFactory = cardFactory;
+  }
 
  renderCard = (initialCard) => {
-   const card = this._cardFactory(initialCard, cardTemplate).create();
-   CardGallery.cardGalary.prepend(card);
+   const card = this._cardFactory(initialCard, cardTemplate, openCardPreview).create();
+   this._cardGallery.prepend(card);
  }
 
  renderCards = () => Array.from(this._initialCards).forEach(initialCard => this.renderCard(initialCard));

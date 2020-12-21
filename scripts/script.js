@@ -1,24 +1,28 @@
-import { initialCards, validSettings } from './constant.js';
-import { openPopup, closePopup } from "./popup.js";
-import { preview, previewCloseButton } from './constant.js';
-import { profile, profileName, profileStatus, profileEditButton, profileCloseButton, profileForm, profileNameInput, profileStatusInput } from './constant.js';
-import { card, cardCloseButton, cardAddButton, cardForm, cardNameInput, cardLinkInput } from './constant.js';
+import { initialCards, validSettings } from './utils/constant.js';
+import { openPopup, closePopup } from "./utils/popup.js";
 
 import  Card  from './Card.js';
 import  CardGallery  from './CardGallery.js';
 import  FormValidator  from './FormValidator.js';
 
-
-//=========cardFactory=======
-const cardFactory = (...args) => new Card(...args);
-const cardGallery = new CardGallery(initialCards, cardFactory);
 //========profileForm======
+const profile = document.querySelector('.popup_profile');
+const profileName = document.querySelector('.profile__name');
+const profileStatus = document.querySelector('.profile__status');
+const profileForm = profile.querySelector('.popup__form');
+const profileNameInput = profileForm.querySelector('.popup__field_text_name');
+const profileStatusInput = profileForm.querySelector('.popup__field_text_status');
+const profileCloseButton = profile.querySelector('.popup__close-button');
+
 const profileFormValidation = new FormValidator(validSettings, profileForm);
       profileFormValidation.enableValidation();
 
 const openEditProfilePopup = () =>{
   profileNameInput.value   = profileName.textContent;
   profileStatusInput.value = profileStatus.textContent;
+
+  profileFormValidation.checkFormValidity();
+
   openPopup(profile);
 }
 
@@ -36,12 +40,20 @@ const initProfileForm = () => {
 }
 
 //=========cardForm==========
+const card = document.querySelector('.popup_card');
+const cardCloseButton = card.querySelector('.popup__close-button');
+const cardAddButton = document.querySelector('.profile__add-button');
+const cardForm = card.querySelector('.popup__form');
+const cardNameInput = cardForm.querySelector('.popup__field_text_name');
+const cardLinkInput = cardForm.querySelector('.popup__field_text_link');
+
 const cardFormValidation = new FormValidator(validSettings, cardForm);
       cardFormValidation.enableValidation();
 
 const openAddCardPopup = () =>  {
-  cardNameInput.value = '';
-  cardLinkInput.value = '';
+  cardForm.reset();
+  cardFormValidation.checkFormValidity();
+
   openPopup(card);
 }
 
@@ -61,6 +73,14 @@ const initCardForm = () => {
     cardForm.reset();
   });
 }
+//===============================
+const gallery = document.querySelector('.elements__list');
+const cardFactory = (...args) => new Card(...args);
+const cardGallery = new CardGallery(gallery, initialCards, cardFactory);
+
+const preview = document.querySelector('.popup_preview');
+const previewCloseButton = preview.querySelector('.popup__close-button');
+const profileEditButton = document.querySelector('.profile__edit-button');
 
 document.addEventListener("DOMContentLoaded", function() {
    cardGallery.renderCards();
