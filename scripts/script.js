@@ -1,9 +1,9 @@
 import { initialCards, validSettings } from './utils/constant.js';
 import { openPopup, closePopup } from "./utils/popup.js";
 
-import  Card  from './Card.js';
-import  CardGallery  from './CardGallery.js';
-import  FormValidator  from './FormValidator.js';
+import  Card  from './components/Card.js';
+import  CardGallery  from './components/CardGallery.js';
+import  FormValidator  from './components/FormValidator.js';
 
 //========profileForm======
 const profile = document.querySelector('.popup_profile');
@@ -17,7 +17,7 @@ const profileCloseButton = profile.querySelector('.popup__close-button');
 const profileFormValidation = new FormValidator(validSettings, profileForm);
       profileFormValidation.enableValidation();
 
-const openEditProfilePopup = () =>{
+const openEditProfilePopup = () => {
   profileNameInput.value   = profileName.textContent;
   profileStatusInput.value = profileStatus.textContent;
 
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
    initProfileForm();
    initCardForm();
 
-   previewCloseButton.addEventListener('click', () => {closePopup(preview)});
+   previewCloseButton.addEventListener('click', () => { closePopup(preview)} );
    profileEditButton.addEventListener('click', openEditProfilePopup);
    cardAddButton.addEventListener('click', openAddCardPopup);
 });

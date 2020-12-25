@@ -1,5 +1,5 @@
-import { cardTemplate } from './utils/constant.js';
-import { openCardPreview } from './utils/utils.js';
+import { cardTemplate } from '../utils/constant.js';
+import { openCardPreview } from '../utils/utils.js';
 
 class CardGallery {
   constructor(cardGallery, initialCards, cardFactory) {
