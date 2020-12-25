@@ -10,7 +10,7 @@ export default class Section {
   }
 
   addItem = (view) => {
-    this._container.append(view);
+    this._container.prepend(view);
   }
 
   renderItems = () => {
