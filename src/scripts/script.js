@@ -1,3 +1,5 @@
+import '../pages/index.css';
+
 import { initialCards, validSettings } from './utils/constant.js';
 import { handleCardClick } from './utils/utils.js';
 
