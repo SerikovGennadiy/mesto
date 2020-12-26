@@ -10,7 +10,7 @@ export default class PopupWithForm extends Popup {
       .querySelector('.popup__form');
   }
 
-  _getInputValues = () => {
+  getInputValues = () => {
      const inputs = Array.from(this._form.querySelectorAll('input'));
      return inputs.reduce((accumulator, current) => {
        accumulator[current.name] = current.value;
@@ -29,7 +29,7 @@ export default class PopupWithForm extends Popup {
   }
 
   open() {
-    if(typeof this._init == 'function'){
+    if(typeof this._init === 'function'){
       this._init();
     }
     super.open();

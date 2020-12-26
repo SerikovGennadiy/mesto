@@ -7,14 +7,10 @@ class Card {
     this._previewer = previewer;
   }
 
-  _deleteCard = (button) => {
-    const card = button.target.closest('.element');
-    card.remove();
-  }
+  _deleteCard = () => this._card.remove()
 
-  _likeCard = (button) => {
-    const card = button.target.closest('.element');
-    const likeButton = card.querySelector('.element__like-button');
+  _likeCard = () => {
+    const likeButton = this._card.querySelector('.element__like-button');
           likeButton.classList.toggle('element__like-icon_liked');
   }
 

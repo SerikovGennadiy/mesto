@@ -19,15 +19,15 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this._popup.addEventListener('click', this._handleOverlayClickClose );
+    this._popup.addEventListener('mousedown', this._handleOverlayClickClose );
     body.addEventListener('keydown', this._handleEscClose);
-    this._closeButton.addEventListener('click', ()=> { this.close(); });
+    this._closeButton.addEventListener('click', this.close.bind(this));
   }
 
   unsetEventListeners() {
-    this._popup.removeEventListener('click', this._handleOverlayClickClose );
+    this._popup.removeEventListener('mousedown', this._handleOverlayClickClose );
     body.removeEventListener('keydown', this._handleEscClose);
-    this._closeButton.removeEventListener('click', () => { this.close(); });
+    this._closeButton.removeEventListener('click', this.close.bind(this));
   }
 
   open() {
