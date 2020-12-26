@@ -13,6 +13,10 @@ export default class Section {
     this._container.prepend(view);
   }
 
+  renderItem = (item) => {
+    this._renderer(item);
+  }
+
   renderItems = () => {
     this.clear();
 
