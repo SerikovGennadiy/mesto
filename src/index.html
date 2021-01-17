@@ -16,6 +16,7 @@
             <div class="profile__avatar">
               <!-- <img class="profile__avatar-photo" src="<%=require('./images/avatar/сousteau.jpg')%>" alt="Фотография Жака-Ива Кусто"> -->
               <img class="profile__avatar-photo" src="./images/avatar/сousteau.jpg" alt="Фотография Жака-Ива Кусто">
+              <button class="profile__avatar-button"></button>
             </div>
             <div class="profile__info">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -81,7 +82,10 @@
         <img class="element__picture" src="https://cdn.sstatic.net/Img/unified/sprites.svg?v=e5e58ae7df45" alt="Дефолтное изображение">
         <div class="element__title-container">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__like-icon element__like-button"></button>
+          <div class="element__like">
+            <button type="button" class="element__like-icon element__like-button"></button>
+            <span class="element__like-counter">10</span>
+          </div>
         </div>
         <button type="button" class="element__trash-icon element__trash-button"></button>
       </li>

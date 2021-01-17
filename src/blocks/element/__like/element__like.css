@@ -1,0 +1,5 @@
+.element__like {
+  display: grid;
+  row-gap: 3px;
+  justify-items: center;
+}

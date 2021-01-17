@@ -1,5 +1,7 @@
 // import '../pages/index.css';
 
+import Api from './components/Api.js';
+
 import { initialCards, validSettings } from './utils/constant.js';
 import { handleCardClick } from './utils/utils.js';
 
@@ -10,6 +12,16 @@ import FormValidator  from './components/FormValidator.js';
 import Section from './components/Section.js';
 import PopupWithForm from './components/PopupWithForm.js';
 import UserInfo from './components/UserInfo.js';
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19',
+  headers: {
+    authorization: '1b6428dc-fc4d-44c7-bd79-7066a6565839',
+    'Content-Type': 'application/json'
+  }
+});
+
+var test = 1000;
 
 const gallery = new Section({
   items: initialCards,

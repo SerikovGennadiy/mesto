@@ -1,20 +1,23 @@
 class Api {
-  constructor({url, headers}) {
-    this._url = url;
-    this._header = headers;
+  constructor({baseUrl, headers}) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
   }
 
   getInitialCards() {
-    // ...
+    return fetch(`${this._baseUrl}/cards`, { headers: this._headers })
+              .then(result => {
+                  return result.ok ? result.json() : Promise.reject(`Ошибка ${result.status} (${result.statusText})`)
+              });
   }
 
+  getProfile() {
+    return fetch(`${this._baseUrl}/users/me`, { headers: this._headers })
+              .then(result => {
+                  return result.ok ? result.json() : Promise.reject(`Ошибка ${result.status} (${result.statusText})`)
+              });
+  }
   // другие методы работы с API
 }
 
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19',
-  headers: {
-    authorization: '1b6428dc-fc4d-44c7-bd79-7066a6565839',
-    'Content-Type': 'application/json'
-  }
-});
+export default Api;

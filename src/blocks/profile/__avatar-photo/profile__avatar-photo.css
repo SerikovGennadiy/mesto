@@ -1,4 +1,7 @@
 .profile__avatar-photo {
   display: block;
   width: 100%;
+
+  position: relative;
+  z-index: 1;
 }
