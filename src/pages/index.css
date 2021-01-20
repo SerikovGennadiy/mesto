@@ -17,3 +17,4 @@
 @import url(../blocks/popup/__field/_error/popup__field_error.css);
 @import url(../blocks/popup/__field-error/_active/popup__field-error_active.css);
 @import url(../blocks/popup/__submit-button/_inactive/popup__submit-button_inactive.css);
+@import url(../blocks/popup/__submit-button/_confirm/popup__submit-button_confirm.css);

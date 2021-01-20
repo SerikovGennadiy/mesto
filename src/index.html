@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
     <title>Mesto</title>
 </head>
 <body class="page">
@@ -15,7 +15,7 @@
           <section class="profile page__profile">
             <div class="profile__avatar">
               <!-- <img class="profile__avatar-photo" src="<%=require('./images/avatar/сousteau.jpg')%>" alt="Фотография Жака-Ива Кусто"> -->
-              <img class="profile__avatar-photo" src="./images/avatar/сousteau.jpg" alt="Фотография Жака-Ива Кусто">
+              <img class="profile__avatar-photo" src="" alt="Фотография пользователя">
               <button class="profile__avatar-button"></button>
             </div>
             <div class="profile__info">
@@ -76,6 +76,29 @@
             <button type="button" class="popup__close-button"></button>
           </div>
         </div>
+        <div class="popup popup_confirm-delete-card">
+          <div class="popup__container">
+            <h2 class="popup__title">Вы уверены?</h2>
+            <form class="popup__form" action="#" method="get" name="confirm_delete">
+              <input type="hidden" name="card__id" value="">
+              <button type="submit" class="popup__submit-button popup__submit-button_confirm">Да</button>
+            </form>
+            <button type="button" class="popup__close-button"></button>
+          </div>
+        </div>
+        <div class="popup popup_update-avatar">
+          <div class="popup__container">
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form class="popup__form" action="#" method="get" name="update-avatar">
+              <div class="popup__field-box">
+                <input type="url" id="avatar-link" class="popup__field popup__field_url_link" name="avatar__link" value="" autocomplete="off" placeholder="Ссылка на аватар пользователя" required>
+                <span id="avatar-link-error" class="popup__field-error"></span>
+              </div>
+              <button type="submit" class="popup__submit-button">Сохранить</button>
+            </form>
+            <button type="button" class="popup__close-button"></button>
+          </div>
+        </div>
     </div>
     <template id="card-template">
       <li class="element">
@@ -84,7 +107,7 @@
           <h2 class="element__title"></h2>
           <div class="element__like">
             <button type="button" class="element__like-icon element__like-button"></button>
-            <span class="element__like-counter">10</span>
+            <span class="element__like-counter"></span>
           </div>
         </div>
         <button type="button" class="element__trash-icon element__trash-button"></button>

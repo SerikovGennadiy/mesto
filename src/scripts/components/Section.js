@@ -13,15 +13,15 @@ export default class Section {
     this._container.prepend(view);
   }
 
-  renderItem = (item) => {
-    this._renderer(item);
+  renderItem = (item, userId) => {
+    this._renderer(item, userId);
   }
 
-  renderItems = () => {
+  renderItems = (userId) => {
     this.clear();
 
     this._items.forEach((item)=> {
-      this.renderItem(item);
+      this.renderItem(item, userId);
     });
   }
 }
