@@ -4,29 +4,25 @@ import FormValidator from '../components/FormValidator.js';
 import { validSettings } from '../utils/constant.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 
-const profile = document.querySelector('.popup_profile');
-const profileForm = profile.querySelector('.popup__form');
-const profileNameInput = profileForm.querySelector('.popup__field_text_name');
-const profileAboutInput = profileForm.querySelector('.popup__field_text_status');
+import {  profileForm,
+          profileNameInput,
+          profileAboutInput, 
+          profileEditButton,
+          avatarForm,
+          avatarInput,  
+          profileUpdateAvatar } from './constant.js';
+
 const profileFormValidation = new FormValidator(validSettings, profileForm);
       profileFormValidation.enableValidation();
 
-const profileEditButton = document.querySelector('.profile__edit-button');
-
-const avatar = document.querySelector('.popup_update-avatar');
-const avatarForm = avatar.querySelector('.popup__form');
-const avatarInput = avatarForm.querySelector('.popup__field_url_link');
 const avatarFormValidation = new FormValidator(validSettings, avatarForm);
       avatarFormValidation.enableValidation();
-
-const profileUpdateAvatar = document.querySelector('.profile__avatar-button');
 
 // ====== привязка обработчиков на кнопки в разделе профиля ======
 const bindProfileHandlers = (user) => {
   // ================ форма профиля ================
   const popupWithProfileForm = new PopupWithForm({
     init: () => {
-      console.log('profile', user);
       const { name, about } = user.getUserInfo();
       profileNameInput.value = name;
       profileAboutInput.value = about;
@@ -71,8 +67,8 @@ const bindProfileHandlers = (user) => {
         avatarInput.value
       )
       .then(updatedProfile => {
-          profileUpdateAvatar.textContent = 'Cохранить';
-          user.setUserPhoto(updatedProfile.avatar)
+        profileUpdateAvatar.textContent = 'Cохранить';
+        user.setUserPhoto(updatedProfile.avatar)
       })
       .catch(err => {
         profileUpdateAvatar.textContent = 'Cохранить';

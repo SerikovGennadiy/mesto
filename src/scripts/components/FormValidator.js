@@ -62,13 +62,11 @@ class FormValidator {
     this._setEventListeners(this._form);
   }
 
- checkFormValidity = () => {
+  checkFormValidity = () => {
     this._inputList.forEach((inputElement) => {
-      if(inputElement.value) {
-        this._checkInputValidity(inputElement);
-      }
-      this._toggleButtonState();
-    });
+        this._hideInputError(inputElement)
+      });
+    this._toggleButtonState();
   }
 }
 

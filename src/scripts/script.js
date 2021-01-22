@@ -12,4 +12,5 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(user => {
       loadAddCardHandler(user);
     })
+    .catch(err => console.log(err));
 });

@@ -27,9 +27,7 @@ export const gallery = new Section({
 export const loadGallery = (user) => {
    return api.getCards()
       .then(cards => {
-        cards.forEach(card => {
-          gallery.renderItem(card, user._id);
-        });
+        gallery.renderItems(cards, user._id);
         return user;
       })
       .catch(console.log.bind(console));

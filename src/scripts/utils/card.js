@@ -8,6 +8,7 @@ import FormValidator from '../components/FormValidator.js';
 import { validSettings } from '../utils/constant.js';
 import { gallery } from '../utils/gallery.js';
 
+import { cardForm, cardAddButton } from './constant.js';
 // ========== предварительный просмотр карточки ==================
 const imagePreviewPopup = new PopupWithImage('.popup_preview');
 
@@ -21,10 +22,13 @@ const confirmDeleteCardPopup =
             submit: (event) => {
                 event.preventDefault();
                 var card = confirmDeleteCardPopup.getCard();
-                console.log(card);
-                api.deleteCard(card.getCardId());
-                card.removeCard();
-
+                api.deleteCard(card.getCardId())
+                   .then(() => {
+                     card.removeCard();
+                   })
+                   .catch(err => {
+                     console.log(err);
+                   });
                 confirmDeleteCardPopup.close();
             }
         },
@@ -39,24 +43,23 @@ export const handleCardLike = (cardId, cardLikeCounter, isLiked) => {
   if(isLiked) {
         api.setCardLike(cardId)
           .then(card => {
-              cardLikeCounter.textContent = card.likes.length;
-          });
+            cardLikeCounter.textContent = card.likes.length;
+          })
+          .catch(err => console.log(err));
   }
   else {
       api.removeCardLike(cardId)
         .then(card => {
-            cardLikeCounter.textContent = card.likes.length;
-        });
+          cardLikeCounter.textContent = card.likes.length;
+        })
+        .catch(err => console.log(err));
   }
 }
 
 // =============== добавить карту ===========================
-const card = document.querySelector('.popup_card');
-const cardForm = card.querySelector('.popup__form');
+
 const cardFormValidation = new FormValidator(validSettings, cardForm);
       cardFormValidation.enableValidation();
-
-const cardAddButton = document.querySelector('.profile__add-button');
 
 const bindAddCardHandler = (user) => {
     const popupWithCardForm = new PopupWithForm({
@@ -77,18 +80,18 @@ const bindAddCardHandler = (user) => {
                     resolve(initialCard);
                 }
                 else {
-                    reject(`ошибка добавления карты перед отправкой на сервер`)
+                    reject(`ошибка добавления карты перед отправкой на сервер`);
                 }
           });
 
           promiseCard
             .then(initialCard => {
-
                 api.addCard(initialCard)
                   .then(card => {
                     cardAddButton.textContent = 'Создать';
                     gallery.renderItem(card, user._id)
-                  });
+                  })
+                  .catch(err=>console.log(err));
             })
             .catch(err => {
               cardAddButton.textContent = 'Создать';
