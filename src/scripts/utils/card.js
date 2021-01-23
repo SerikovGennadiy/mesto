@@ -21,7 +21,7 @@ const confirmDeleteCardPopup =
      new PopupWithConfirmCardDelete({
             submit: (event) => {
                 event.preventDefault();
-                var card = confirmDeleteCardPopup.getCard();
+                const card = confirmDeleteCardPopup.getCard();
                 api.deleteCard(card.getCardId())
                    .then(() => {
                      card.removeCard();
@@ -70,7 +70,7 @@ const bindAddCardHandler = (user) => {
       submit:(event) => {
         event.preventDefault();
         cardAddButton.textContent = 'Сохранение...';
-          var promiseCard = new Promise((resolve, reject) => {
+          const promiseCard = new Promise((resolve, reject) => {
                 const formValues = popupWithCardForm.getInputValues();
                 const initialCard = {
                     name : formValues.card__name,
